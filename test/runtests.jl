@@ -1,5 +1,7 @@
 using PGFPlotsXExamples
 using Base.Test
+using NBInclude
 
-# write your own tests here
-@test 1 == 2
+nbinclude("../examples/Chapter3.ipynb")
+nbinclude("../examples/Chapter4.3.ipynb")
+nbinclude("../examples/Chapter4.5.ipynb")

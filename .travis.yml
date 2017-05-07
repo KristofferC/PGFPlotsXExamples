@@ -8,12 +8,18 @@ julia:
   - nightly
 notifications:
   email: false
-# uncomment the following lines to override the default test script
-#script:
-#  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-#  - julia -e 'Pkg.clone(pwd()); Pkg.build("PGFPlotsXExamples"); Pkg.test("PGFPlotsXExamples"; coverage=true)'
-after_success:
-  # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("PGFPlotsXExamples")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
-  # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("PGFPlotsXExamples")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y pdf2svg
+  - sudo apt-get install -y texlive-latex-base
+  - sudo apt-get install -y texlive-binaries
+  - sudo apt-get install -y texlive-pictures
+  - sudo apt-get install -y texlive-latex-extra
+
+script:
+  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+  - julia -e 'Pkg.clone("https://github.com/KristofferC/PGFPlotsX");
+              Pkg.clone(pwd());
+              Pkg.build("PGFPlotsXExamples");
+              Pkg.test("PGFPlotsXExamples"; coverage=true)'

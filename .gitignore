@@ -2,3 +2,6 @@
 *.jl.*.cov
 *.jl.mem
 .ipynb_checkpoints/
+*.tex
+*.pdf
+*.svg
