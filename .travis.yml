@@ -7,6 +7,8 @@ julia:
   - nightly
 notifications:
   email: false
+dist: trusty
+
 
 before_install:
   - sudo add-apt-repository -y ppa:jonathonf/texlive-2016
