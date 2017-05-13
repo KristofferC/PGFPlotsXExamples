@@ -29,8 +29,7 @@ cd(EXAMPLE_DIR) do
     for file in readdir()
         if endswith(file, ".ipynb")
             println("Testing ", file)
-            if get(ENV, "CI", false)
-                println("Setting f to ...")
+            if get(ENV, "CI", false) == "true"
                 f = identity
             else
                 f = export_ans
