@@ -18,8 +18,8 @@ before_install:
 
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - julia -e 'Pkg.clone("https://github.com/KristofferC/NBInclude.jl")
-              Pkg.checkout("NBInclude", "kc/ans_hook")
+  - julia -e 'Pkg.clone("https://github.com/KristofferC/NBInclude.jl");
+              Pkg.checkout("NBInclude", "kc/ans_hook");
               Pkg.clone("https://github.com/KristofferC/PGFPlotsX");
               Pkg.clone(pwd());
               Pkg.build("PGFPlotsXExamples");
