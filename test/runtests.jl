@@ -11,6 +11,8 @@ using DataFrames
 const EXAMPLE_DIR = joinpath(@__DIR__, "..", "examples/")
 const MIME_types = [PGFPlotsX.Plot, PGFPlotsX.AxisLike, PGFPlotsX.TikzPicture, PGFPlotsX.TikzDocument]
 
+ENV["TESTING_PGFPLOTSX"] = true
+
 function export_ans(x)
     if any(issubtype.(typeof(x), MIME_types))
         folder, file = tempdir(), tempname()
