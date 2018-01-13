@@ -21,7 +21,7 @@ before_install:
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone("https://github.com/KristofferC/PGFPlotsX");
-              Pkg.build("PGFPlotsX")
+              Pkg.build("PGFPlotsX");
               Pkg.clone(pwd());
               Pkg.build("PGFPlotsXExamples");
               Pkg.test("PGFPlotsXExamples"; coverage=true)'
